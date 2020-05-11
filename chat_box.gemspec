@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{creating a chatbox}
   spec.description   = %q{creating a chatbox}
-  spec.homepage      = "https://www.codegaragetech.com"
+  spec.homepage      = "RVKSingh/chat_box"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
