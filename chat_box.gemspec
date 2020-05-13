@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{creating a chatbox}
   spec.description   = %q{creating a chatbox}
-  spec.homepage      = "https://github.com/sharmaparas4444/chat_box"
+  spec.homepage      = "https://github.com/sharmaparas4444/conversations"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
@@ -29,4 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rails", "~> 5.2"
+  spec.add_runtime_dependency "devise"
+  spec.add_runtime_dependency "jquery-rails"
 end
