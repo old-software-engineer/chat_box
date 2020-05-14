@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chat_box (0.1.1)
+    chat_box (0.1.2)
       devise
       jquery-rails
 

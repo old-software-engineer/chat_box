@@ -27,6 +27,7 @@ module ChatBox
     end
 
     def conversated?
+      session[:conversations] ||= [] if session[:conversations].nil?
       session[:conversations].include?(@conversation.id)
     end
   end
