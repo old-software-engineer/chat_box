@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
        <% debugger %>
-      <%= link_to "x", close_conversation_path(conversation) , class: "btn btn-default btn-xs pull-right", remote: true, method: :delete %>
+      <%= link_to "x", chat_box.close_conversation_path(conversation) , class: "btn btn-default btn-xs pull-right", remote: true, method: :delete %>
     </div>
 
     <div class="panel-body" style="display: none;">
@@ -12,7 +12,7 @@
           <%= render 'chat_box/conversations/conversation_content', messages: conversation.messages, user: user %>
         </ul>
       </div>
-      <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
+      <%= form_for [conversation, conversation.messages.new],url: chat_box.conversation_messages_path(conversation), remote: true do |f| %>
         <%= f.hidden_field :user_id, value: user.id %>
         <%= f.text_area :body, class: "form-control" %>
         <%= f.submit "Send", class: "btn btn-success" %>
