@@ -34,9 +34,9 @@ class ChatBoxGenerator < Rails::Generators::Base
   #     "has_many :messages\n has_many :conversations, foreign_key: :sender_id\n"
   #   end
   # end
-  #  def add_chat_route
-  #    route "mount Chat::Engine => \"/chat\", as: \"chat\""
-  #  end
+   def add_chat_route
+     route "mount ChatBox::Engine => \"/chat_box\", as: \"chat_box\""
+   end
   #
 
   def rails5?

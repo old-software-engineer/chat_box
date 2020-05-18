@@ -1,6 +1,5 @@
 (function() {
     $(document).on('click', '.toggle-window', function(e) {
-        debugger
         e.preventDefault();
         var panel = $(this).parent().parent();
         var messages_list = panel.find('.messages-list');

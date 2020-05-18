@@ -1,7 +1,6 @@
 module ChatBox
   class MessagesController < ApplicationController
     def create
-      debugger
       @conversation = Conversation.includes(:recipient).find(params[:conversation_id])
       @message = @conversation.messages.create(message_params)
 

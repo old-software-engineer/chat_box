@@ -1,7 +1,6 @@
 module ChatBox
   class ConversationsController < ApplicationController
     def create
-      debugger
       @conversation = Conversation.get(current_user.id, params[:user_id])
       add_to_conversations unless conversated?
       respond_to do |format|
