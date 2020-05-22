@@ -2,7 +2,7 @@ require 'chat_box/engine'
 require "active_support/dependencies"
 # require "../app/controllers/chat_box/conversations_controller"
 # require "../config/routes"
-# require "chat_box/helpers"
+require "chat_box/user"
 # require "conversations/controllers"
 module ChatBox
   # Our host application root path

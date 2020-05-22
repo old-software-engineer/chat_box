@@ -27,13 +27,39 @@ class ChatBoxGenerator < Rails::Generators::Base
     migration_template 'messages_migration.rb', 'db/migrate/create_messages_table.rb', migration_version: migration_version
   end
 
-  # def inject_chat_into_user_model
-  #   file = "app/models/user.rb"
-  #   after = "class User < ApplicationRecord\n"
-  #   inject_into_file file, after: after do
-  #     "has_many :messages\n has_many :conversations, foreign_key: :sender_id\n"
-  #   end
-  # end
+  def inject_chat_into_user_model
+    file = "app/models/user.rb"
+    after = "class User < ApplicationRecord\n"
+    inject_into_file file, after: after do
+      "inclide ChatBox::User\n"
+    end
+  end
+
+  def channel_current_user
+    file = "app/channels/application_cable/connection.rb"
+    if file.exist?
+      after = "Connection < ActionCable::Connection::Base\n"
+      inject_into_file file, after: after do
+        "identified_by :current_user
+          def connect
+            self.current_user = find_verified_user
+          end
+
+          protected
+
+          def find_verified_user
+            if (current_user = env['warden'].user)
+              current_user
+            else
+              reject_unauthorized_connection
+            end
+          end"
+      end
+    else
+      puts "please create app/channels/application_cable/connection.rb"
+    end
+  end
+
    def add_chat_route
      route "mount ChatBox::Engine => \"/chat_box\", as: \"chat_box\""
    end
