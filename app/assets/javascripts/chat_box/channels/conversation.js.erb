@@ -2,8 +2,7 @@ App.chat_box_conversation = App.cable.subscriptions.create({channel:"ChatBox::Co
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
-        debugger
-        var conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
+        var conversation = $('#chat-box-container').find("[data-conversation-id='" + data['conversation_id'] + "']");
 
         if (data['window'] !== undefined) {
             var conversation_visible = conversation.is(':visible');
@@ -17,8 +16,8 @@ App.chat_box_conversation = App.cable.subscriptions.create({channel:"ChatBox::Co
                 conversation.find('.messages-list').find('ul').append(data['message']);
             }
             else {
-                $('#conversations-list').append(data['window']);
-                conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
+                $('#chat-box-container').append(data['window']);
+                conversation = $('#chat-box-container').find("[data-conversation-id='" + data['conversation_id'] + "']");
                 conversation.find('.panel-body').toggle();
             }
         }

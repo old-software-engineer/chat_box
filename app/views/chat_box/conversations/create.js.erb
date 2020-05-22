@@ -1,4 +1,4 @@
-var conversations = $('#conversations-list');
+var conversations = $('#chat-box-container');
 var conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
 
 if (conversation.length !== 1) {

@@ -1,1 +1,1 @@
-$('#conversations-list').find("[data-conversation-id='" + "<%= @conversation.id %>" + "']").parent().remove();
+$('#chat-box-container').find("[data-conversation-id='" + "<%= @conversation.id %>" + "']").parents('.chat-box-conversation').remove();
