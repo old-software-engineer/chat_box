@@ -3,7 +3,6 @@ module ChatBox
     queue_as :default
 
     def perform(message)
-      debugger
       sender = message.user
       recipient = message.conversation.opposed_user(sender)
 
@@ -11,7 +10,7 @@ module ChatBox
       broadcast_to_recipient(recipient, message)
     end
 
-    def self.perform_later(i)
+    def perform_later(i)
       # code here
     end
 
@@ -36,8 +35,15 @@ module ChatBox
 
     def render_window(conversation, user)
       ApplicationController.render(
-          partial: 'conversations/conversation',
+          partial: 'chat_box/conversations/conversation',
           locals: { conversation: conversation, user: user }
+      )
+    end
+
+    def render_message(message,user)
+      ApplicationController.render(
+          partial: 'chat_box/messages/message',
+          locals: { message: message, user: user }
       )
     end
   end

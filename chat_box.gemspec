@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rails", "~> 5.2"
-  spec.add_runtime_dependency "devise"
-  spec.add_runtime_dependency "jquery-rails"
+  spec.add_runtime_dependency 'devise', '~> 4'
+  spec.add_runtime_dependency 'jquery-rails', '~> 4'
 end

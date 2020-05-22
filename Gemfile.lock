@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    chat_box (0.1.2)
-      devise
-      jquery-rails
+    chat_box (0.2.2)
+      devise (~> 4)
+      jquery-rails (~> 4)
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ DEPENDENCIES
   rake (~> 10.0)
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   2.0.2
+   2.1.4

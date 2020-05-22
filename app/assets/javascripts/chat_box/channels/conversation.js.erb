@@ -1,4 +1,4 @@
-App.chat_box_conversation = App.cable.subscriptions.create("ChatBox::ConversationChannel",{
+App.chat_box_conversation = App.cable.subscriptions.create({channel:"ChatBox::ConversationChannel"},{
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
