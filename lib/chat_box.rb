@@ -1,9 +1,8 @@
 require 'chat_box/engine'
+require "chat_box/user_chat"
 require "active_support/dependencies"
-# require "../app/controllers/chat_box/conversations_controller"
-# require "../config/routes"
-require "chat_box/user"
-# require "conversations/controllers"
+require 'byebug'
+
 module ChatBox
   # Our host application root path
   # We set this when the engine is initialized
