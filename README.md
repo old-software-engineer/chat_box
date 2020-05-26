@@ -24,10 +24,6 @@ Or install it yourself as:
 
     $ gem install chat_box
 
-## add css & JS
-Add (*= require chat_box) application.css
-Add (//= require chat_box) aplication.js
-
 ## Usage
 
 Once the gen is Install into the application run this cmd:
