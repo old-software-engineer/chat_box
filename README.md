@@ -13,7 +13,7 @@ jquery-rails
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'chat_box'
+gem 'chat_box', github: "sharmaparas4444/chat_box", branch: 'master' 
 ```
 
 And then execute:
@@ -22,7 +22,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ rails g chat_box user
+    $ gem install chat_box
 
 ## add css & JS
 Add (*= require chat_box) application.css
@@ -30,8 +30,25 @@ Add (//= require chat_box) aplication.js
 
 ## Usage
 
-TODO: Write usage instructions here
+Once the gen is Install into the application run this cmd:
 
+    $ rails g chat_box ModelName
+
+!! important point: Use that model in which the devise login functionality has been implemented.
+
+Include the chatbox css into the application.css for design.
+```
+    *= require chat_box
+```  
+Include the chat box jquery into application.js for real time chatting.
+```
+    //= require chat_box
+```
+
+To display the chat box for chatting add the chat box section into the application.html.erb 
+```
+    <%= chat_section %>
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
