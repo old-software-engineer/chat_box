@@ -28,10 +28,10 @@ class ChatBoxGenerator < Rails::Generators::Base
   end
 
   def inject_chat_into_user_model
-    file = "app/models/user.rb"
+    file = "app/models/user_chat.rb"
     after = "class User < ApplicationRecord\n"
     inject_into_file file, after: after do
-      "inclide ChatBox::User\n"
+      "include ChatBox::UserChat\n"
     end
   end
 
