@@ -13,7 +13,19 @@ class ChatBoxGenerator < Rails::Generators::Base
   #   copy_file "conversations.js.erb","app/assets/javascripts/conversations.js.erb"
   #   copy_file "_chat_box.html.erb","app/views/conversations/_chat_box.html.erb"
   # end
-  #
+
+  def inject_chat_into_user_model
+    model_name = args.first
+    file = "app/models/#{model_name}.rb"
+    raise "Model error #{model_name.classify} does not exist" unless File.exist?(file)
+    raise "Devise Gem is not integrated with #{model_name} model" if model_name.classify.constantize.devise_modules.reject(&:blank?).blank?
+    after = "class #{model_name.classify} < ApplicationRecord\n"
+    inject_into_file file, after: after do
+      "include ChatBox::UserChat\n"
+    end
+
+  end
+
   def add_helper
     file = "app/controllers/application_controller.rb"
     after = "class ApplicationController < ActionController::Base\n"
@@ -27,20 +39,13 @@ class ChatBoxGenerator < Rails::Generators::Base
     migration_template 'messages_migration.rb', 'db/migrate/create_messages_table.rb', migration_version: migration_version
   end
 
-  def inject_chat_into_user_model
-    file = "app/models/user_chat.rb"
-    after = "class User < ApplicationRecord\n"
-    inject_into_file file, after: after do
-      "include ChatBox::UserChat\n"
-    end
-  end
 
   def channel_current_user
     file = "app/channels/application_cable/connection.rb"
-    if file.exist?
-      after = "Connection < ActionCable::Connection::Base\n"
-      inject_into_file file, after: after do
-        "identified_by :current_user
+    raise "file required #{file}" unless File.exist?(file)
+    after = "Connection < ActionCable::Connection::Base\n"
+    inject_into_file file, after: after do
+      "   identified_by :current_user
           def connect
             self.current_user = find_verified_user
           end
@@ -53,10 +58,7 @@ class ChatBoxGenerator < Rails::Generators::Base
             else
               reject_unauthorized_connection
             end
-          end"
-      end
-    else
-      puts "please create app/channels/application_cable/connection.rb"
+          end\n"
     end
   end
 

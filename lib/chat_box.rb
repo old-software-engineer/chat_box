@@ -1,6 +1,7 @@
 require 'chat_box/engine'
 require "chat_box/user_chat"
 require "active_support/dependencies"
+require 'byebug'
 
 module ChatBox
   # Our host application root path
