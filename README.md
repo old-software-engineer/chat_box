@@ -4,12 +4,16 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+# Requirements
+devise
+jquery-rails
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'conversations'
+gem 'chat_box'
 ```
 
 And then execute:
@@ -18,7 +22,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install chat_box
+    $ rails g chat_box user
+
+## add css & JS
+Add (*= require chat_box) application.css
+Add (//= require chat_box) aplication.js
 
 ## Usage
 
