@@ -18,7 +18,7 @@ class ChatBoxGenerator < Rails::Generators::Base
     model_name = args.first
     file = "app/models/#{model_name}.rb"
     raise "Model error #{model_name.classify} does not exist" unless File.exist?(file)
-    raise "Devise Gem is not integrated with #{model_name} model" if model_name.classify.constantize.devise_modules.reject(&:blank?).blank?
+    raise "Devise Gem is not integrated with #{model_name} model" unless model_name.classify.constantize.devise_modules?
     after = "class #{model_name.classify} < ApplicationRecord\n"
     inject_into_file file, after: after do
       "include ChatBox::UserChat\n"
