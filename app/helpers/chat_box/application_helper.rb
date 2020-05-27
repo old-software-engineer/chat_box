@@ -2,7 +2,7 @@ module ChatBox
   module ApplicationHelper
     def chat_section
       if user_signed_in?
-        users = ChatBox::UserChat::User.where("id != ?", current_user)
+        users = current_user.chat_list
         conversations = session[:conversations].nil? || session[:conversations].blank? ? [] : Conversation.includes(:recipient, :messages).where(id: session[:conversations])
         render partial: "chat_box/user/user_list",locals:{users: users,conversations: conversations}
       end

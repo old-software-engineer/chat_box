@@ -10,5 +10,9 @@ module ChatBox
       has_many :messages,class_name: 'ChatBox::Message'
       has_many :conversations, foreign_key: :sender_id,class_name: 'ChatBox::Conversation'
     end
+
+    def chat_list
+      self.class.where("id NOT IN (?)",[self.id])
+    end
   end
 end
