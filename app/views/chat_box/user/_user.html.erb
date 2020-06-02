@@ -1,0 +1,5 @@
+<% if user.is_online? %>
+  <li data-id="<%= user.id %>"><%= link_to user.email, chat_box.conversations_path(user_id: user), remote: true, method: :post %><div class="<%= user.is_online? ? "user-online" : "user-offline" %>"></div></li>
+<% else %>
+  <li data-id="<%= user.id %>"><%= link_to user.email, chat_box.conversations_path(user_id: user), remote: true, method: :post %><div class="<%= user.is_online? ? "user-online" : "user-offline" %>"></div></li>
+<% end %>

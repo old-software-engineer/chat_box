@@ -1,21 +1,16 @@
 <div id="chat-box-container">
-<!--  <div class="chat-box-conversation">-->
-<!--    <ul id="conversations-list">-->
-      <% conversations.each do |conversation| %>
-        <%= render 'chat_box/conversations/conversation', conversation: conversation, user: current_user %>
-      <% end %>
-<!--    </ul>-->
-<!--  </div>-->
+  <% conversations.each do |conversation| %>
+    <%= render 'chat_box/conversations/conversation', conversation: conversation, user: current_user %>
+  <% end %>
+
   <div class="chat-box-list">
     <div class="panel panel-primary">
       <div class="panel-heading list-heading">
         <h3 class="panel-title">User list</h3>
       </div>
       <div class="panel-body list-body">
-        <ul>
-          <% users.each do |user| %>
-            <li><%= link_to user.email, chat_box.conversations_path(user_id: user), remote: true, method: :post %></li>
-          <% end %>
+        <ul id='chat_box_online_users'>
+          <%= render partial: "chat_box/user/user", collection: current_user.chat_list, as: :user %>
         </ul>
       </div>
     </div>

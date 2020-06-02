@@ -14,8 +14,13 @@ class ChatBoxGenerator < Rails::Generators::Base
   #   copy_file "_chat_box.html.erb","app/views/conversations/_chat_box.html.erb"
   # end
 
-  def inject_chat_into_user_model
+  def model_name
     model_name = args.first
+    raise "rails g chat_box model_name(give the model name as a params)" if model_name.nil?
+    return model_name
+  end
+
+  def inject_chat_into_user_model
     file = "app/models/#{model_name}.rb"
     raise "Model error #{model_name.classify} does not exist" unless File.exist?(file)
     raise "Devise Gem is not integrated with #{model_name} model" unless model_name.classify.constantize.devise_modules?
@@ -35,6 +40,8 @@ class ChatBoxGenerator < Rails::Generators::Base
   end
 
   def create_migration_file
+    model_name = args.first
+    migration_template 'user_migration.rb', "db/migrate/add_last_seen_at_to_#{model_name}.rb", migration_version: migration_version,name: model_name
     migration_template 'conversations_migration.rb', 'db/migrate/create_conversations_table.rb', migration_version: migration_version
     migration_template 'messages_migration.rb', 'db/migrate/create_messages_table.rb', migration_version: migration_version
   end
