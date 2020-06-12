@@ -8,6 +8,7 @@
 
 /*chat-box conversation section*/
 .chat-box-conversation {
+    border-radius: 5%;
     border: 1px solid #999;
     display: inline-block;
     vertical-align: bottom;
@@ -28,6 +29,7 @@
 
 /*Chat-box list*/
 .chat-box-list{
+    border-radius: 5%;
     border: 1px solid #999;
     display: inline-block;
     vertical-align: bottom;
@@ -36,8 +38,9 @@
     pointer-events: auto;
     float: right;
     max-width: 250px;
-    max-height:317px;
-    height: 317px;
+    max-height:300px;
+    height: 300px;
+    overflow: hidden;
 }
 
 .chat-box-list .list-heading{
@@ -54,7 +57,7 @@
     padding: 0px 5px;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 250px;
+    height: 230px;
 }
 
 .chat-box-list .list-body::-webkit-scrollbar {
@@ -71,14 +74,16 @@
 }
 
 .chat-box-list .list-body ul li{
+    display: inline-flex;
     padding: 5px;
-    width: 100%;
+    width: 93%;
     margin: 10px 5px;
     box-shadow: 0px 0px 10px 6px #0000006b;
     background: #ffffff;
 }
+
 .chat-box-list .list-body ul li a{
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .chat-box-close{
@@ -125,7 +130,7 @@ ul li {
     background-color: #05ff03;
     height: 15px;
     width: 15px;
-    position: absolute;
+    position: relative;
     margin: 1%;
     border-radius: 50%;
     box-shadow: 0px 0px 15px 5px #fff;
@@ -135,8 +140,38 @@ ul li {
     /* float: left; */
     height: 15px;
     width: 15px;
-    position: absolute;
+    position: relative;
     margin: 1%;
     border-radius: 50%;
     box-shadow: 0px 0px 15px 5px #fff;
+}
+
+#conversations-list{
+    margin-bottom: 5px;
+}
+
+
+.btn-success {
+    color: #fff;
+    border: none;
+    background: #248A52;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 2% 2%;
+    border-radius: 15px;
+    margin-left: 3%;
+}
+
+.chat-box-textarea {
+    border-radius: 40px;
+    background: none;
+    resize: none;
+    height: 25px;
+}
+
+.new_message {
+    border-radius: 15px;
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2%;
 }
