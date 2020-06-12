@@ -5,7 +5,6 @@ module ChatBox
     extend ActiveSupport::Concern
 
     included do
-      class UserList < self; end
       has_many :messages,class_name: 'ChatBox::Message'
       has_many :conversations, foreign_key: :sender_id,class_name: 'ChatBox::Conversation'
       after_save :update_online_status

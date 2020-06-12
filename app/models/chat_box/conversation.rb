@@ -2,8 +2,8 @@ module ChatBox
   class Conversation < ApplicationRecord
     has_many :messages,foreign_key: :conversation_id, dependent: :destroy,class_name: "Message"
 
-    belongs_to :sender, foreign_key: :sender_id, class_name:  "::User"
-    belongs_to :recipient, foreign_key: :recipient_id, class_name: "::User"
+    belongs_to :sender, foreign_key: :sender_id, class_name:  ChatBox.author_class.to_s
+    belongs_to :recipient, foreign_key: :recipient_id, class_name: ChatBox.author_class.to_s
 
     validates :sender_id, uniqueness: { scope: :recipient_id }
 

@@ -20,6 +20,10 @@ class ChatBoxGenerator < Rails::Generators::Base
     return model_name
   end
 
+  def create_chat_initializer
+    create_file "config/initializers/chat_box.rb","#This model name is used for conversation\nChatBox.author_class = '#{model_name.to_s}'"
+  end
+
   def inject_chat_into_user_model
     file = "app/models/#{model_name}.rb"
     raise "Model error #{model_name.classify} does not exist" unless File.exist?(file)
@@ -83,6 +87,7 @@ class ChatBoxGenerator < Rails::Generators::Base
       "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
     end
   end
+
   private
   def self.next_migration_number(dirname)
     next_migration_number = current_migration_number(dirname) + 1
