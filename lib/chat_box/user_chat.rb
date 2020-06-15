@@ -6,7 +6,8 @@ module ChatBox
 
     included do
       has_many :messages,class_name: 'ChatBox::Message'
-      has_many :conversations, foreign_key: :sender_id,class_name: 'ChatBox::Conversation'
+      has_many :conversations, foreign_key: :sender_id,class_name: 'ChatBox::Conversation',dependent: :destroy
+      has_many  :groups, foreign_key: :sender_id,class_name: 'ChatBox::Group', dependent: :destroy
       after_save :update_online_status
     end
 

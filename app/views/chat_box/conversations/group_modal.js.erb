@@ -1,0 +1,7 @@
+<%debugger%>
+
+var conversations = $('#chat-box-container');
+conversations.append("<%= escape_javascript(render 'chat_box/conversations/group_modal', conversation: @conversation, user: current_user) %>");
+debugger
+
+conversations.find('#ChatBoxGroupModal').modal('show');

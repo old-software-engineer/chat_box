@@ -8,6 +8,10 @@
       <div class="panel-heading list-heading">
         <h3 class="panel-title"><%= option[:title] %></h3>
       </div>
+      <div class="chat-box-group">
+        <%= link_to "+ Group",chat_box.group_modal_conversations_path,remote: true, class: "chat-box-group-btn" %>
+        <!-- <a class="chat-box-group-btn" href="">+ Group</a> -->
+      </div>
       <div class="panel-body list-body">
         <ul id='chat_box_online_users'>
           <%= render partial: "chat_box/user/user", collection: current_user.chat_list, as: :user %>

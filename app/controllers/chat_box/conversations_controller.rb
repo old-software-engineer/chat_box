@@ -16,6 +16,12 @@ module ChatBox
       end
     end
 
+    def group_modal
+      respond_to do |format|
+        format.js
+      end
+    end
+
     private
 
     def add_to_conversations
