@@ -1,0 +1,15 @@
+var group_conversations = $('#chat-box-container');
+var group_conversation = group_conversations.find("[data-group-conversation-id='" + "<%= @group.id %>" + "']");
+if (group_conversation.length !== 1) {
+    group_conversations.append("<%= escape_javascript(render 'chat_box/conversations/group_conversation', group: @group, user: current_user) %>");
+    group_conversation = group_conversations.find("[data-group-conversation-id='" + "<%= @group.id %>" + "']");
+}
+$("#ChatBoxGroupModal").dialog('close');
+$("#ChatBoxGroupModal").remove();
+
+group_conversation.find('.panel-body').show();
+
+var messages_list = group_conversation.find('.messages-list');
+var height = messages_list[0].scrollHeight;
+messages_list.scrollTop(height);
+

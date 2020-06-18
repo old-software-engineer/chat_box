@@ -20,6 +20,10 @@ module ChatBox
       create(sender_id: sender_id, recipient_id: recipient_id)
     end
 
+    def is_conversation
+      !recipient_id.nil? && group_name.nil? #&& JSON.parse(self.group_ids).blank?
+    end
+
     def opposed_user(user)
       user == recipient ? sender : recipient
     end

@@ -9,6 +9,7 @@ module ChatBox
       has_many :conversations, foreign_key: :sender_id,class_name: 'ChatBox::Conversation',dependent: :destroy
       has_many  :groups, foreign_key: :sender_id,class_name: 'ChatBox::Group', dependent: :destroy
       after_save :update_online_status
+
     end
 
     def update_online_status
@@ -20,11 +21,16 @@ module ChatBox
       )
     end
 
+
     def render_user_list(user)
       ApplicationController.render(
           partial: 'chat_box/user/user',
           locals:{user: user}
       )
+    end
+
+    def chat_groups
+      Group.where("group_ids LIKE '%?%' OR sender_id IS ?",self.id,self.id)
     end
 
     def chat_list

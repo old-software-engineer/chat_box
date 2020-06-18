@@ -1,3 +1,14 @@
-<div id="ChatBoxGroupModal">
-	
+<div id="ChatBoxGroupModal" title="Create Group Chat">
+	<form  action="<%= create_group_conversations_path %>" method="Post" data-remote="true">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" data-selected="user" name="group[group_ids]" value="[]">
+		<input type="text" name="group[group_name]" placeholder="Group Name" required="true">
+		<h3>Select <%= current_user.class.name %> for group</h3>
+		<div class="chat-box-group-list-div">
+			<ul>
+				<%= render partial: "chat_box/conversations/user", collection: user_list, as: :user %>
+			</ul>
+		</div>
+		<button class="chat-box-create-group-btn" type="submit" >Create</button>
+	</form>
 </div>

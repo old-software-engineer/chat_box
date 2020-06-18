@@ -1,8 +1,11 @@
 <div id="chat-box-container">
   <% conversations.each do |conversation| %>
-    <%= render 'chat_box/conversations/conversation', conversation: conversation, user: current_user %>
+    <% if conversation.is_conversation %>
+      <%= render 'chat_box/conversations/conversation', conversation: conversation, user: current_user %>
+    <% else %>
+      <%= render 'chat_box/conversations/group_conversation', group: conversation, user: current_user %>
+    <% end %>
   <% end %>
-
   <div class="chat-box-list">
     <div class="panel panel-primary">
       <div class="panel-heading list-heading">
@@ -14,7 +17,8 @@
       </div>
       <div class="panel-body list-body">
         <ul id='chat_box_online_users'>
-          <%= render partial: "chat_box/user/user", collection: current_user.chat_list, as: :user %>
+          <%= render partial: "chat_box/conversations/group", collection: groups, as: :group %>
+          <%= render partial: "chat_box/user/user", collection: users, as: :user %>
         </ul>
       </div>
     </div>

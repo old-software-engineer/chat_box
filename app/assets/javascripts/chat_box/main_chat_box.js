@@ -12,4 +12,15 @@
             messages_list.scrollTop(height);
         }
     });
+
+    $(document).on('click','[data-select="user"]',function(e){
+      var $user_input = $('[data-selected="user"]')
+      var selected_ids = JSON.parse($user_input.val());
+      if ($(this).prop("checked")) {
+        selected_ids.push(this.value);
+      }else{
+        selected_ids.splice(selected_ids.indexOf(this.value),1);
+      }
+      $($user_input).val(JSON.stringify(selected_ids))
+    })
 })();

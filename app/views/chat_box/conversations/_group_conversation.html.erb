@@ -1,0 +1,26 @@
+<div class="chat-box-conversation">
+  <ul id="group-list">
+    <li>
+      <div class="panel panel-default" data-group-conversation-id="<%= group.id %>">
+        <div class="panel-heading conversation-heading">
+          <%= link_to group.group_name, '', class: 'toggle-window' %>
+          <%= link_to "x", chat_box.close_conversation_path(group) , class: "chat-box-close", remote: true, method: :post %>
+        </div>
+
+        <div class="panel-body" style="display: none;">
+          <div class="messages-list">
+            <ul>
+              <%= render 'chat_box/conversations/conversation_content', messages: group.messages, user: user %>
+            </ul>
+          </div>
+          <form class="group_message">
+            <input name="conversation_id" type="hidden" value="<%= group.id %>">
+            <input name="user_id" type="hidden" value="<%= user.id %>">
+            <textarea name="body" class="chat-box-textarea" required='true' placeholder="Type Text" rows="1"></textarea>
+            <input type="submit" class="btn btn-success" value="Send">
+          </form>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
